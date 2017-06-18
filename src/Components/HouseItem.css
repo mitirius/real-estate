@@ -1,0 +1,10 @@
+section {
+	border: 1px solid rgb(183, 201, 225);
+	margin: 16px;
+	width: 30%;
+	display: inline-block;
+}
+
+.image2, .image3 {
+	margin-left: 60px;
+}
