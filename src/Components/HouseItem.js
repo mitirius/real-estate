@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import './HouseItem.css';
 
 export class HouseItem extends Component {
@@ -8,47 +9,23 @@ export class HouseItem extends Component {
       const house = this.props.house;
       
 		return (
-		<div className='container'>
-        <div className='row'>
-          		<section className=" col-sm-3 col-xs-12 image1">
-            	<img className='img-responsive center-block' src={`${URL}/${house.images[0]}`}  alt="Dr Winthrop Photo" />
-            	<p>Dr. Winthrop is the guardian of Missy, a three-year old Llaso mix, 
-            	who he</p>
-              <p>Lorem ipsum dolor sit amet</p>
-              <p className='price'>10989</p>
+          <section className=" col-sm-3 col-xs-12 image1">
+              <p className='title'><h4>{house.title}</h4></p>
+            	<img className='img-responsive center-block' 
+                 src={house.advertisementAssets[0].advertisementThumbnails.inventory_m.url}
+                alt="real estate" />
+              <p className='price'>{`${house.advertisementPrice.baseRent} Euro`}</p>
               <div className='details'>
-                <p className='roomnos'>zimmer</p>
-                <p className='area'>sq mt</p>
+                <p className='area'>{`ab ${house.realestateSummary.space.toFixed(2)} sq mt`}</p>
+                <p className='zimmer'>{`${house.realestateSummary.numberOfRooms} Zimmer`}</p>
               </div>
-          		</section>
-            
-              <section className="col-sm-3 col-xs-12 image2">
-              <img className='img-responsive ' src="images/drwinthrop.jpg" alt="Dr Winthrop Photo" />
-              <p>Dr. Winthrop is the guardian of Missy, a three-year old Llaso mix, 
-              who he</p>
-              <p>Lorem ipsum dolor sit amet</p>
-              <p className='price'>10989</p>
-              <div className='details'>
-                <p className='roomnos'>zimmer</p>
-                <p className='area'>sq mt</p>
-              </div>
-              </section>
-  
-              <section className="col-sm-3 col-xs-12 image3">
-              <img className='img-responsive' src="images/drwinthrop.jpg" alt="Dr Winthrop Photo" />
-              <p>Dr. Winthrop is the guardian of Missy, a three-year old Llaso mix, 
-              who he</p>
-              <p>Lorem ipsum dolor sit amet</p>
-              <p className='price'>10989</p>
-              <div className='details'>
-                <p className='roomnos'>zimmer</p>
-                <p className='area'>sq mt</p>
-              </div>
-              </section>
-      </div>
-    </div>
+          </section>
 		);
 	}
 }
+
+HouseItem.propTypes = {
+  house: PropTypes.object.isRequired,
+};
 
 export default HouseItem;

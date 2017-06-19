@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import HouseItem from './HouseItem';
+import myData from '../houses.json'
 
 export class HouseList extends Component {
 	constructor(props){
@@ -12,6 +13,7 @@ export class HouseList extends Component {
 
 	componentWillMount() {
     	this.fetchHouses();
+    	this.setState({houses: myData.data});
   		}
 	
 	fetchHouses() {
@@ -30,8 +32,12 @@ export class HouseList extends Component {
 
 	render() {
 		return (
-			<div>
-				{this.state.houses.map(h => <HouseItem key={h.id} house={h} />)}
+			<div className='container'>
+				<div className='row'>
+					{this.state.houses
+						.filter((h,idx) => idx < 10)
+						.map(h => <HouseItem key={h.id} house={h} />)}
+				</div>
 			</div>
 		);
 	}
